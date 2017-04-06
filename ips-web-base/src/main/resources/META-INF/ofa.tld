@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+     version="2.0">
+     
+  	<description><![CDATA["ofa自定义标签库组件"]]></description>
+  	<tlib-version>1.0</tlib-version>
+  	<short-name>ofa</short-name>
+	<uri>http://www.ylinkpay.org/tags/ofa</uri>
+	
+	<tag>
+		<description>常量标签</description>
+		<name>constant</name>
+		<tag-class>cn.com.ylink.ips.web.base.tag.ConstantTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>命名空间,用于区分不同模块或系统</description>
+			<name>namespace</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>常量属性名</description>
+			<name>fieldName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<description>防止重复提交</description>
+		<name>token</name>
+		<tag-class>cn.com.ylink.ips.web.base.tag.TokenTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+  
+</taglib>

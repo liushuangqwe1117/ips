@@ -1,0 +1,15 @@
+description = "ips support"
+dependencies {
+    compile project(":ips-core")
+    compile "javax.mail:mail:${mailVersion}"
+    compile "org.apache.velocity:velocity:${velocityVersion}"
+    compile "org.apache.httpcomponents:httpclient:${httpclientVersion}"
+    compile "dom4j:dom4j:${dom4jVersion}"
+    compile("jaxen:jaxen:${jaxenVersion}") {
+        exclude(module: "icu4j")
+    }
+    compile "org.quartz-scheduler:quartz:${quartzVersion}"
+    compile "bouncycastle:bcprov-jdk16:${bcprovJdk16Version}"
+    compile "commons-net:commons-net:${commonsNetVersion}"
+    compile "com.whalin:Memcached-Java-Client:3.0.1"
+}

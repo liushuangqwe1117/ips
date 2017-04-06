@@ -1,0 +1,10 @@
+description = "ips orm mybatis"
+
+dependencies {
+    compile project(":ips-core")
+    compile project(":ips-datasource")
+    compile "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+    compile "org.mybatis:mybatis:${mybatisVersion}"
+    compile "org.springframework:spring-jdbc:${springVersion}"
+    compile "commons-pool:commons-pool:${commonsPoolVersion}"
+}

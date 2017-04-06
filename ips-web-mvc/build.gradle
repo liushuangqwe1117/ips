@@ -1,0 +1,7 @@
+description = "ips web mvc"
+dependencies {
+    compile project(":ips-web-base")
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compile "org.hibernate:hibernate-validator:${hibernateValidatorVersion}"
+    compile "javax.servlet:servlet-api:${servletApiVersion}"
+}

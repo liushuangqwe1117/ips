@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	default-lazy-init="false" default-autowire="byName">
+
+	<bean id="exampleBusinessObject" class="com.ylink.ylpay.pay.ClusterDemoJob"/>
+	
+	<bean id="exampleJobDetail" class="frameworkx.springframework.scheduling.quartz.BeanInvokingJobDetailFactoryBean">
+		<property name="targetBean" value="exampleBusinessObject" />
+		<property name="targetMethod" value="execute" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="exampleCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="cronExpression" value="0/10 * * * * ? *" />
+		<property name="jobDetail" ref="exampleJobDetail"/>
+		<property name="description" value="Quartz 定时任务示例！"/>
+	</bean>
+
+	<!-- ClusterDemoSchedulerFactoryBean -->
+	<bean id="clusterDemoSchedulerFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="exampleCronTrigger" />
+			</list>
+		</property>
+		<!-- cluster-->
+		<property name="dataSource" ref="dataSource"/>
+		<property name="applicationContextSchedulerContextKey" value="applicationContextKey"/>
+		<property name="configLocation" value="classpath:quartz.properties" />
+		
+	</bean>
+
+</beans>

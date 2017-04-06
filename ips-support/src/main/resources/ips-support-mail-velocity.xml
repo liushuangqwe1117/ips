@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<import resource="classpath*:ips-support-mail-base.xml" />
+	
+	<!--  使用Velocity模板来创建邮件内容 --> 
+	<bean id="velocityEngineFactory" class="org.springframework.ui.velocity.VelocityEngineFactoryBean" lazy-init="true">
+		<property name="velocityProperties">
+			<props>
+		  		<prop key="input.encoding">UTF-8</prop> 
+		  		<prop key="output.encoding">UTF-8</prop> 
+	  			<prop key="velocimacro.library"/> 
+	  			<prop key="resource.loader">class</prop> 
+	  			<prop key="class.resource.loader.class">
+	  				org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+	  			</prop> 
+	  		</props>
+	  	</property>
+  	</bean>
+	
+</beans>

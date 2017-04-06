@@ -1,0 +1,7 @@
+
+description = "ips remoting hessian"
+
+dependencies {
+    compile "com.caucho:hessian:${hessianVersion}"
+    compile "org.springframework:spring-context:${springVersion}"
+}

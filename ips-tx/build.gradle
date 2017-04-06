@@ -1,0 +1,4 @@
+description = "ips tx"
+dependencies {
+    compile "org.springframework:spring-tx:${springVersion}"
+}

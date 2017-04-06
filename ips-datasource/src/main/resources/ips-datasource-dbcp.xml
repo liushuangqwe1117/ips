@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<!--用于连接dbcp数据源 -->
+	<bean id="commonDataSourceConfig" class="org.apache.commons.dbcp.BasicDataSource" abstract="true" destroy-method="close">
+		<!-- 设置数据源中返回的连接是否采用自动机制,默认值为true -->
+		<property name="defaultAutoCommit" value="true"/>
+		<!-- 设置数据源是否仅能执行只读操作,默认值为:false -->
+		<property name="defaultReadOnly" value="false"/>
+		<!--  
+		<property name="poolPreparedStatements" value="true"/>
+		<property name="maxOpenPreparedStatements" value="10" />
+		-->
+		<!-- 每隔多少毫秒执行一次idle连接的清理 -->
+		<property name="timeBetweenEvictionRunsMillis" value="30000"/>
+		<!-- 连接池的最大数据库连接数,设置为0时,表示没有限制 -->
+		<property name="maxActive" value="15"/>
+		<property name="initialSize" value="5"/>
+		<!-- 数据库连接的最大连接数。超过此数，数据库连接将被标记为不可用，然后被释放,设置为0时,表示没有限制 -->
+		<property name="maxIdle" value="8"/>
+		<property name="minIdle" value="0"/>
+		<!-- 最大建立连接等待时间.如果超过此时间将接到异常.设为－1表示无限制,单位毫秒. -->
+		<property name="maxWait" value="10000"/>
+		<!-- 用于验证连接是否成功的查询SQL语句,SQL语句必需至少要返回一行数据,如可以简单的设置为:"select count(*) from test"
+		<property name="validationQuery" value=""/> -->
+		<!-- 回收被遗弃的(空闲时间超过removeAbandonedTimeout设置的时间)数据库连接到连接池中,默认为false -->
+		<property name="removeAbandoned" value="true"/>
+		<!-- 数据库连接多长时间不用将被视为被遗弃而收回连接池中,在removeAbandoned=true时需要设置该值,单位秒 -->
+		<property name="removeAbandonedTimeout" value="300"/>
+		<!-- 将被遗弃的数据库连接的回收记入日志,默认为false -->
+		<property name="logAbandoned" value="true"/>
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+description = "ips security"
+dependencies {
+    compile project(":ips-core")
+    compile project(":ips-web-base")
+    compile "org.apache.shiro:shiro-core:${shiroVersion}"
+    compile "org.apache.shiro:shiro-web:${shiroVersion}"
+    compile "org.apache.shiro:shiro-aspectj:${shiroVersion}"
+    compile "org.apache.shiro:shiro-ehcache:${shiroVersion}"
+    compile "org.apache.shiro:shiro-spring:${shiroVersion}"
+    compile("org.apache.shiro:shiro-quartz:${shiroVersion}") {
+        exclude(module: "quartz")
+    }
+    compile "org.quartz-scheduler:quartz:${quartzVersion}"
+    compile "net.sf.ehcache:ehcache-core:${ehcacheVersion}"
+    compile "com.google.code:captcha-kaptcha:${captchaKaptchaVersion}"
+    compile("javax.servlet:servlet-api:${servletApiVersion}")
+    compile("javax.servlet.jsp:javax.servlet.jsp-api:${jspApiVersion}")
+}

@@ -1,0 +1,9 @@
+description = "ips-datasource"
+
+dependencies {
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "mysql:mysql-connector-java:${mysqlDriverVersion}"
+    compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
+    compile "c3p0:c3p0:${c3p0Version}"
+    compile "com.jolbox:bonecp:${bonecpVersion}"
+}

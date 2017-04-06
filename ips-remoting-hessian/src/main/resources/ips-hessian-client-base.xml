@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- hessian客户端父类 <bean id="hessianClient" abstract="true" class="org.springframework.remoting.caucho.HessianProxyFactoryBean"> 
+		<property name="overloadEnabled" value="true" /> </bean> <bean id="hessianClient" 
+		abstract="true" class="HessianProxyFactoryBean">
+		<property name="overloadEnabled" value="true" /> <property name="connectTimeout" 
+		value="10" /> </bean> -->
+
+	<bean id="hessianClient" abstract="true"
+		class="cn.com.ylink.ips.hessian.client.MyHessianProxyFactoryBean">
+		<property name="overloadEnabled" value="true" />
+	</bean>
+
+	<bean
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:properties/hessian.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<import resource="classpath*:hessian/hessian-client.xml" />
+</beans>

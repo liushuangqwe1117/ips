@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- hessian服务端父类 -->
+	<bean id="hessianServer" abstract="true"
+		class="org.springframework.remoting.caucho.HessianServiceExporter" />
+
+	<import resource="classpath*:hessian/hessian-server.xml" />
+</beans>

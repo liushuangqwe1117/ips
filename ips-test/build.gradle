@@ -1,0 +1,6 @@
+description = "ips test"
+dependencies {
+    compile project(":ips-core")
+    compile "org.springframework:spring-test:${springVersion}"
+    compile "javax.servlet:servlet-api:${servletApiVersion}"
+}

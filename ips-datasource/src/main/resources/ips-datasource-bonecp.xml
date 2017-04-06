@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/util 
+			http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	<util:properties id="bonecpProps" location="classpath:properties/bonecp.properties"/>
+	
+	<!--用于连接dbcp数据源 -->
+	<bean id="commonDataSourceConfig" class="com.jolbox.bonecp.BoneCPDataSource" abstract="true" destroy-method="close">
+        <!-- 每个分区最大的连接数  -->  
+        <property name="maxConnectionsPerPartition" 
+        	value="#{bonecpProps['bonecp.maxConnectionsPerPartition']}" /> 
+        <!-- 每个分区最小的连接数 -->  
+        <property name="minConnectionsPerPartition" 
+			value="#{bonecpProps['bonecp.minConnectionsPerPartition']}"/>  
+        <!-- 分区数 ，默认值2，最小1，推荐3-4，视应用而定-->  
+        <property name="partitionCount" value="#{bonecpProps['bonecp.partitionCount']}"/>  
+        <!-- 每次去拿数据库连接的时候一次性要拿几个,默认值：2 -->  
+        <property name="acquireIncrement" value="#{bonecpProps['bonecp.acquireIncrement']}"/>
+        <!-- 测试连接有效性的间隔时间，单位分钟   -->
+        <property name="idleConnectionTestPeriod" value="#{bonecpProps['bonecp.idleConnectionTestPeriod']}"/>
+        <!-- 连接超时时间 毫秒-->
+		<property name="connectionTimeout" value="#{bonecpProps['bonecp.connectionTimeout']}"/>
+        <!-- 空闲存活时间 分钟-->
+        <property name="idleMaxAge" value="#{bonecpProps['bonecp.idleMaxAge']}"/>
+	</bean>
+	
+	
+</beans>
